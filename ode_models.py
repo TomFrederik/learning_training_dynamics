@@ -9,5 +9,5 @@ class MLP(nn.Module):
         self.net = nn.Sequential(nn.Linear(input_dim, hidden_dim), nn.ReLU(), nn.Linear(hidden_dim, output_dim))
     
     def forward(self, t, x):
-        x = torch.cat([torch.tensor([t]), x], dim=-1)
+        x = torch.cat([torch.tensor([t], device=self.device), x], dim=-1)
         return self.net(x)
